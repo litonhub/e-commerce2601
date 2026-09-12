@@ -1,0 +1,23 @@
+
+.marquee-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+.brand-item {
+  position: relative;
+}
+
+.brand-item::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -20px;
+  transform: translateY(-50%);
+  width: 1px;
+  height: 32px;
+  background: #e6e6e6;
+}
+
+.swiper-slide:last-child .brand-item::after {
+  display: none;
+}

@@ -1,0 +1,50 @@
+@import "tailwindcss";
+
+@theme{
+ --color-primary: #00b207;
+ --color-badgered: #ea4b48;
+ --color-badgeblue: #2388ff;
+ --text-hsize: 32px;
+ --font-pop: "Poppins", sans-serif;
+ --color-gry: #666666;
+ --color-brdr: #e6e6e6;
+ --color-brdrtwo: #e5e5e5;
+ --color-logoc: #1a1a1a;
+ --color-subb: #333333;
+ --color-gryd: #808080;
+ --color-grynine: #999999;
+}
+
+@layer {
+  .defaultfs {
+    font-family: "Poppins", sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+  }
+}
+
+.slider .swiper-pagination,
+.slidertwo .swiper-pagination {
+  transition: all 0.3s ease;
+}
+
+.slider .swiper-pagination-bullet {
+  background-color: #ccc;
+  opacity: 1;
+   width: 6px;
+  height: 14px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+}
+
+.slidertwo .swiper-pagination-bullet {
+  background-color: #ccc;
+  opacity: 1;
+  transition: all 0.3s ease;
+}
+
+.slider .swiper-pagination-bullet-active,
+.slidertwo .swiper-pagination-bullet-active {
+  background-color: #00B207;
+}
