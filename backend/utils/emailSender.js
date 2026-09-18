@@ -1,9 +1,7 @@
 const nodemailer = require("nodemailer");
 
-
-
 const transporter = nodemailer.createTransport({
-    host: "gmail",
+    host: "smtp.gmail.com",
     port: 587,
     secure: false,
     auth: {
@@ -12,20 +10,37 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-
-async function verificationEmail(email) {
+async function verificationEmail(email, token) {
     try {
         const info = await transporter.sendMail({
-            from: '"E-commerce2601" litonmia.dev.bd@gmail.com',
+            from: `"E-commerce2601" <${process.env.SMTP_USER}>`,
             to: email,
             subject: "Please Verify your Email",
-            html: "<b>verify your email: click here</b>",
+            html: `<b>Verify your email <a href="http://localhost:5173/verify/${token}">Click Here</a></b>`,
         });
 
         console.log("Message sent: %s", info.messageId);
-        // Preview URL is only available when using an Ethereal test account
-        console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
     } catch (err) {
         console.error("Error while sending mail:", err);
     }
 }
+
+async function forgetPasswordEmail(email, token) {
+    try {
+        const info = await transporter.sendMail({
+            from: `"E-commerce2601" <${process.env.SMTP_USER}>`,
+            to: email,
+            subject: "Reset Password",
+            html: `<b>For Resetting Password <a href="http://localhost:5173/resetpassword/${token}">Click Here</a></b>`,
+        });
+
+        console.log("Message sent: %s", info.messageId);
+    } catch (err) {
+        console.error("Error while sending mail:", err);
+    }
+}
+
+module.exports = {
+    verificationEmail,
+    forgetPasswordEmail
+};
